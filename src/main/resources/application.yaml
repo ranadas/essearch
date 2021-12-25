@@ -1,6 +1,15 @@
 server:
   port: 8088
-
+  servlet:
+    context-path: /es
 spring:
   application:
     name: Elastic Search App
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+  elasticsearch:
+    uris: localhost:9200
+    username: elastic
+    password: elastic!
