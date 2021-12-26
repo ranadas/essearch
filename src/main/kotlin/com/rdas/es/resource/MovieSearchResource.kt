@@ -34,9 +34,14 @@ class MovieSearchResource {
         return "Hello, World"
     }
 
-    @GetMapping("/titleSearch")
-    fun searchByTitle(@RequestParam query: String): SearchResponse {
-        TODO ("yet to be implemented")
+    @GetMapping("/search/director")
+    fun searchByDiector(@RequestParam query: String): List<Film>{
+        return  movieDBSearchService.searchByDirector(query)
+    }
+
+    @GetMapping("/search/title")
+    fun searchByTitle(@RequestParam query: String): List<Film> {
+        return  movieDBSearchService.searchByTitle(query)
     }
 
     @GetMapping("/list")

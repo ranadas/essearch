@@ -12,4 +12,8 @@ interface MovieDBSearchService {
     fun searchByTitle(title: String, pageNum: Int, limit: Int): SearchResponse
 
     fun saveAll(movies: List<Film>)
+
+    fun searchByDirector(director: String) : List<Film>
+
+    fun searchByTitle(title: String) : List<Film>
 }
