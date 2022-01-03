@@ -4,21 +4,16 @@ import com.rdas.es.elasticrepository.MovieRepository
 import com.rdas.es.model.Film
 import com.rdas.es.model.Movie
 import com.rdas.es.model.SearchResponse
-import com.rdas.es.resource.MovieSearchResource
 import com.rdas.es.service.MovieDBSearchService
 import org.slf4j.LoggerFactory
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
 
 @Service
-class MovieDBSearchServiceImpl( val movieRepository: MovieRepository) : MovieDBSearchService {
+class MovieDBSearchServiceImpl(val movieRepository: MovieRepository) : MovieDBSearchService {
 
-    companion object {
-        private val logger = LoggerFactory.getLogger(MovieDBSearchServiceImpl::class.java)
-    }
-
+    private val logger = LoggerFactory.getLogger(MovieDBSearchServiceImpl::class.java)
     override fun getDocument(id: String): Movie {
         TODO("Not yet implemented")
     }
@@ -35,7 +30,7 @@ class MovieDBSearchServiceImpl( val movieRepository: MovieRepository) : MovieDBS
         movieRepository.saveAll(films)
     }
 
-    override fun searchByDirector(director: String) :  List<Film>{
+    override fun searchByDirector(director: String): List<Film> {
         val of = PageRequest.of(0, 10)
         val filmByDirectorName: List<Film> =
             movieRepository.findByDirector(director)
