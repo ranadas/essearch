@@ -13,3 +13,11 @@ spring:
     uris: localhost:9200
     username: elastic
     password: elastic!
+
+logging:
+  pattern:
+    console: "%d %-5level [%thread] %-5p %c{1}:%L %logger : %msg%n"
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.rdas.es:  DEBUG

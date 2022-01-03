@@ -2,17 +2,13 @@ package com.rdas.es.resource
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.rdas.es.model.Film
-import com.rdas.es.model.Movie
-import com.rdas.es.model.SearchResponse
 import com.rdas.es.service.MovieDBSearchService
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.LoggerFactory.getLogger
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
-import java.io.*
-import com.fasterxml.jackson.module.kotlin.readValue
 
 /**
  * Restful API to search Movies
@@ -20,14 +16,11 @@ import com.fasterxml.jackson.module.kotlin.readValue
 @Slf4j
 @RestController
 @RequestMapping("/movie")
-class MovieSearchResource {
+class MovieSearchResource (val movieDBSearchService: MovieDBSearchService){
 
     companion object {
         private val loggerWithExplicitClass = getLogger(MovieSearchResource::class.java)
     }
-
-    @Autowired
-    lateinit var movieDBSearchService: MovieDBSearchService
 
     @GetMapping("/hello")
     fun respondHello(): String {
